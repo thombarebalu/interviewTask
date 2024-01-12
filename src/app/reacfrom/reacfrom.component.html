@@ -1,0 +1,99 @@
+<p>Reactive from</p>
+
+<div class="conatiner">
+    <div class="main">
+        <form [formGroup]="reacFrom" (ngSubmit)="submitForm()">
+            <div class="inputfrom">
+                <button>Add user</button>
+
+            </div>
+
+            <div class="inputfrom">
+                <label for="">first Name</label>
+                <input type="text" placeholder="First Name" formControlName="firstName" id="firstName " required>
+            </div>
+            <div class="inputfrom">
+                <label for="">last Name</label>
+                <input type="text" placeholder="Last Name" formControlName="lastName" id="lastName" required>
+            </div>
+            <div class="inputfrom">
+                <label for="">Email</label>
+                <input type="email" placeholder="Email" formControlName="email" id="email" required>
+            </div>
+            <div class="inputfrom">
+                <label for="">phone</label>
+                <input type="number" placeholder="Phone no" formControlName="phone" id="phone" required>
+            </div>
+            <div class="inputfrom">
+                <label for="">Company</label>
+                <input type="text" placeholder="Company" formControlName="company" id="company" required>
+            </div>
+            <div class="inputfrom">
+                <label for="">Gender</label>
+                <input type="radio" formControlName="gender" id="gender" value="male" required>male
+                <input type="radio" formControlName="gender" id="gender" value="female" required>female
+            </div>
+            <div class="inputfrom">
+                <label for="">DOB</label>
+                <input type="date" formControlName="date" id="date" required>
+
+            </div>
+            <div class="inputfrom">
+                <label>password</label>
+                <input type="password" formControlName="password" id="password" required>
+
+            </div>
+            <div class="inputfrom">
+                <label> confirm password</label>
+                <input type="password" formControlName="confirmpassword" id="confirmpassword" required>
+
+            </div>
+            <div class="button">
+                <button type="submit" [disabled]="!reacFrom.valid">{{ editMode ? 'Update' : 'Register' }}</button>
+                <button type="button" (click)="clearForm()">Cancel</button>
+
+            </div>
+
+
+
+        </form>
+    </div>
+
+
+</div>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Email</td>
+                <td>Phone</td>
+                <td>Company</td>
+                <td>DOB</td>
+                <td>Edit</td>
+                <td>Delete</td>
+            </tr>
+
+        </thead>
+        <tbody>
+        <tbody>
+            <tr *ngFor="let user of getUsers()">
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.company }}</td>
+                <td>{{ user.date | date}}</td>
+                <td>
+                    <button (click)="editUser(user.id)">Edit</button>
+                </td>
+                <td>
+
+                    <button (click)="deleteUser(user.id)">Delete</button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
