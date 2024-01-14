@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,NgZone } from '@angular/core';
 import { FormGroup,FormControl,FormBuilder,Validators } from '@angular/forms';
 import { ServiceService } from '../service.service';
 @Component({
@@ -9,7 +9,7 @@ import { ServiceService } from '../service.service';
 export class ReacfromComponent {
   reacFrom!:FormGroup;
   editMode = false;
-  constructor(private fb:FormBuilder,private serviceService:ServiceService){}
+  constructor(private fb:FormBuilder,private serviceService:ServiceService ,private ngZone:NgZone){}
 
   ngOnInit(): void {
     this.fromPostData();
